@@ -1,8 +1,8 @@
 // Drum Arrays
-const kicks = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false ];
-const snares = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false ];
-const hiHats = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false ];
-const rideCymbals = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false ];
+let kicks = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false ];
+let snares = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false ];
+let hiHats = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false ];
+let rideCymbals = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false ];
 
 const drums = {
   get kicks () {
@@ -20,7 +20,7 @@ const drums = {
 }
 
 const toggleDrum = (drum,index) => {
-  if (drum && index) {
+  if (drum && index >= 0 ) {
     if (drum === 'kicks' || drum === 'snares' || drum === 'hiHats' || drum === 'rideCymbals') {
       //drum string convert to variable
       switch (drum) {
@@ -68,3 +68,27 @@ const toggleDrum = (drum,index) => {
   }
   return 'No input or one input is missing!';
 };
+
+const clear = (drum) => {
+  const Drums = ['kicks','snares','hiHats','rideCymbals'];
+  const drumArray = [drums.kicks,drums.snares,drums.hiHats,drums.rideCymbals];
+  let index = Drums.indexOf(drum);
+  if (index>=0 && index<4) {
+    for (let i = 0; i < drumArray[index].length; i++) {
+      drumArray[index][i]=false;
+    }
+  }
+  return;
+};
+
+const invert = (beat) => {
+  const Drums = ['kicks','snares','hiHats','rideCymbals'];
+  const drumArray = [drums.kicks,drums.snares,drums.hiHats,drums.rideCymbals];
+  let index = Drums.indexOf(beat);
+  if (index>=0 && index<4) {
+    for (let i = 0; i < drumArray[index].length; i++) {
+      drumArray[index][i] === false ? drumArray[index][i]=true : drumArray[index][i]=false ;
+    }
+  }
+  return;
+}
