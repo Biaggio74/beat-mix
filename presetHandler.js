@@ -17,7 +17,6 @@ const presetHandler = (reqType,index,newPresetArray) => {
       return array;
     } else {
       array.unshift(404)
-      return array;
     };
     return array;
   }

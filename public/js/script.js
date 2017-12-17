@@ -91,4 +91,21 @@ const invert = (beat) => {
     }
   }
   return;
-}
+};
+
+const getNeighborPads = (x,y,size) => {
+  const array = [];
+  if ( x >= 0 && y >= 0 && size > x && size > y && size > 0) {
+    if ( x,y < size && x,y >= 0) {
+      for (let i = 1; i < 2; i++) {
+        x - i >= 0  ? array.push([x-i,y]) :  [];
+        x + i <= 4  ? array.push([x+i,y]) :  [];
+        y - i >= 0  ? array.push([x,y-i]) :  [];
+        y + i <= 4  ? array.push([x,y+i]) :  [];
+      };
+    }
+  }
+  return array;
+};
+
+console.log(getNeighborPads(2,2,5));
